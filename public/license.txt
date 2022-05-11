@@ -1,0 +1,8 @@
+Model Information:
+* title:	Felix the Fox - Wild Series
+* source:	https://sketchfab.com/3d-models/felix-the-fox-wild-series-09513a6d526d46da9de8057d181575d4
+* author:	Omabuarts Studio (https://sketchfab.com/omabuarts)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
