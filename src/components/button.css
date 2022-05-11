@@ -1,0 +1,16 @@
+.buttons {
+    position: absolute;
+    margin-bottom: 100px;
+    display: flex;
+   
+    left:50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+button {
+    border-radius: 4px;
+    color: black;
+    margin: 1rem;
+}

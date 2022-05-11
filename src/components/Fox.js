@@ -9,21 +9,24 @@ title: Felix the Fox - Wild Series
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-export default function Model({ ...props }) {
+export default function Model({ action }) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/scene.gltf')
   const { actions } = useAnimations(animations, group)
+  const previousAction = usePrevious(action);
 
     useEffect(() => {
       console.log(actions)
-      actions.Run.play()
-    })
-
+      if(previousAction){
+        actions[previousAction].stop();
+      }
+      actions[action].play()
+    }, [actions, action]);
     
 
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group}  dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="ae4b05f47bc0482f89ca70ff34b83ca6fbx" rotation={[Math.PI / 2, 0, 0]}>
@@ -46,3 +49,14 @@ export default function Model({ ...props }) {
 }
 
 useGLTF.preload('/scene.gltf')
+
+
+function usePrevious(value) {
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+
+  return ref.current;
+}
