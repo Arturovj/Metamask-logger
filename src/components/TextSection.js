@@ -4,9 +4,7 @@ export default function TextSection() {
   return (
     <Wrapper>
       <Title>Metamask Logger</Title>
-      <Description>
-        The Fox will guide you!
-      </Description>
+      <Description>The Fox will guide you!</Description>
     </Wrapper>
   );
 }
@@ -18,13 +16,20 @@ const Wrapper = styled.div`
   gap: 20px;
   text-align: center;
   margin: 0 auto;
-  padding: 80px 20px 10px;
+  padding: 20px 20px 10px;
 `;
 
 const Title = styled.h1`
-  color: rgba(255, 255, 255, 1);
+  
   font-style: normal;
+  align-text: center;
   font-weight: bold;
+  padding-bottom:5px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
   font-size: 40px;
 `;
 

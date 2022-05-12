@@ -86,6 +86,7 @@ export default function Main() {
   return (
     <>
       <Wrapper className="Main">
+
         <Background />
 
         <TextSection />
@@ -108,7 +109,7 @@ export default function Main() {
       </div>
 
       <div className="buttons">
-        <button style={{ cursor: "pointer" }} onClick={handleClick}>
+        <button className="dog-button" style={{ cursor: "pointer" }} onClick={handleClick}>
           {actives && active ? <p>Disconnect</p> : <p>Connect</p>}
 
           {/* {active ? <p>Disconnect</p> : <p>Connect</p>} */}

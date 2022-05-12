@@ -1,7 +1,15 @@
 .buttons {
     position: absolute;
-    bottom: 20%;
+    bottom: 35%;
     display: flex;
+    
+   
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 50px;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5);
+    
     
     left:50%;
     -webkit-transform: translateX(-50%);
@@ -11,15 +19,21 @@
 
 button {
     border-radius: 4px;
-    color: black;
-    margin: 1rem;
+    color: azure;
+    margin: 0.1rem;
+    background: transparent;
+    // border:none;
+    border-radius: 50px;
+    border-color: azure;
+
+    font-weight: bold;
     
 }
 
 .metamask-account{
     display: flex;
     position: absolute;
-    bottom: 40%;
+    bottom: 50%;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -29,7 +43,7 @@ button {
 .balance-account{
     display: flex;
     position: absolute;
-    bottom: 35%;
+    bottom: 45%;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);

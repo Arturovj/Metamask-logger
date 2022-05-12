@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Web3ReactProvider getLibrary={getLibrary}>
+        
      <Main/>
      </Web3ReactProvider>
     </div>
