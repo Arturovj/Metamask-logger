@@ -1,8 +1,11 @@
 // import "../../styles.css";
 import styled from "styled-components";
-import "./button.css";
+import "./button.scss";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect, useCallback } from "react";
+import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
+import useTruncatedAddress from "./Web3/frontend/hooks/useTruncatedAddress";
+import { connector } from "./Web3/frontend/hooks/connector/connector";
 
 import Background from "./Background";
 import TextSection from "./TextSection";
@@ -23,21 +26,62 @@ const Wrapper = styled.div`
 
 export default function Main() {
   const [action, setAction] = useState("Idle");
-  const [active, setActive] = useState(false);
+  const [actives, setActives] = useState(false);
+
+  const [balance, setBalance] = useState(0);
+  const { active, activate, deactivate, account, error, library } =
+    useWeb3React();
+  const isUnsupportedChain = error instanceof UnsupportedChainIdError;
+
+  const connect = useCallback(() => {
+    console.log("connect");
+    activate(connector);
+    window.localStorage.setItem("previouslyConnected", "true");
+  }, [activate]);
+
+  const disconnect = () => {
+    deactivate();
+    window.localStorage.removeItem("previouslyConnected");
+  };
 
   const handleClick = () => {
-    if (!active) {
+    if (!actives && !active) {
+      connect();
       setAction("Run");
-      setActive(true);
-    } else if (active){
-       setAction("Sleep");
-       setActive(false);
+      setActives(true);
     } else {
-        setAction("Idle")
-        setActive(null);
+      disconnect();
+      setAction("Sleep");
+      setActives(false);
     }
-    
   };
+
+  useEffect(() => {
+    library?.getBalance(account).then((result) => {
+      setBalance(result / 1e18);
+    });
+  }, []);
+
+  const getBalance = useCallback(async () => {
+    const toSet = await library.eth.getBalance(account);
+    setBalance((toSet / 1e18).toFixed(2));
+  }, [library?.eth, account]);
+
+  console.log(getBalance);
+
+  useEffect(() => {
+    if (active) getBalance();
+  }, [active, getBalance]);
+
+  useEffect(() => {
+    if (window.localStorage.getItem("previouslyConnected") === "true") {
+      connect();
+      setAction("Run");
+      setActives(true);
+    }
+  }, [connect]);
+
+  const truncatedAddress = useTruncatedAddress(account);
 
   return (
     <>
@@ -55,10 +99,19 @@ export default function Main() {
           </Suspense>
         </Canvas>
       </Wrapper>
+      <div className="metamask-account">
+        {active && <span>{truncatedAddress}</span>}
+      </div>
+
+      <div className="balance-account"
+      >{active && <span>Balance: {balance} ETH</span>}
+      </div>
 
       <div className="buttons">
         <button style={{ cursor: "pointer" }} onClick={handleClick}>
-          {active ? <p>Disconnect</p> : <p>Connect</p>}
+          {actives && active ? <p>Disconnect</p> : <p>Connect</p>}
+
+          {/* {active ? <p>Disconnect</p> : <p>Connect</p>} */}
         </button>
       </div>
     </>

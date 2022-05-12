@@ -1,0 +1,37 @@
+.buttons {
+    position: absolute;
+    bottom: 20%;
+    display: flex;
+    
+    left:50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+button {
+    border-radius: 4px;
+    color: black;
+    margin: 1rem;
+    
+}
+
+.metamask-account{
+    display: flex;
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.balance-account{
+    display: flex;
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
