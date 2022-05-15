@@ -49,3 +49,13 @@ button {
     -moz-transform: translateX(-50%);
     transform: translateX(-50%);
 }
+
+.carousel{
+    position: absolute;
+    display: flex;
+
+    left:50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
