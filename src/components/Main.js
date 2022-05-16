@@ -86,7 +86,9 @@ export default function Main() {
 
   return (
     <>
+    
       <Wrapper className="Main">
+     
 
         <Background />
 
@@ -101,6 +103,9 @@ export default function Main() {
           </Suspense>
         </Canvas>
       </Wrapper>
+      <div className="carousel">
+          <Carousel/>
+      </div>
       <div className="metamask-account">
         {active && <span>{truncatedAddress}</span>}
       </div>
@@ -117,9 +122,7 @@ export default function Main() {
         </button>
       </div>
 
-      <div className="carousel">
-          <Carousel></Carousel>
-      </div>
+      
     </>
   );
 }

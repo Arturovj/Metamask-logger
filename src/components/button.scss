@@ -1,3 +1,4 @@
+
 .buttons {
     position: absolute;
     bottom: 35%;
@@ -51,9 +52,8 @@ button {
 }
 
 .carousel{
-    position: absolute;
+    position: fixed;
     display: flex;
-
     left:50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
