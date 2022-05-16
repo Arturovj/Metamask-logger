@@ -14,7 +14,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
 import Fox from "./Fox";
-import Carousel from "./Carousel/Carousel";
+// import Carousel from "./Carousel/Carousel";
 
 const Wrapper = styled.div`
   position: relative;
@@ -103,9 +103,9 @@ export default function Main() {
           </Suspense>
         </Canvas>
       </Wrapper>
-      <div className="carousel">
+      {/* <div className="carousel">
           <Carousel/>
-      </div>
+      </div> */}
       <div className="metamask-account">
         {active && <span>{truncatedAddress}</span>}
       </div>

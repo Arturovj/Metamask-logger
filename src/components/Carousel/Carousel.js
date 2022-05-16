@@ -31,6 +31,8 @@ export default function Carousel() {
 
 
     const items = trending.map((coin) => {
+        let profit = coin.price_change_percentage_24h >= 0;
+
         return (
             <>
             <div className='coin' >
@@ -41,7 +43,10 @@ export default function Carousel() {
                 width="150"
                 style={{ marginBottom: 10, marginTop: 40}}
                 />
-                <span>{coin?.symbol}</span>
+                <span>{coin?.symbol}
+                &nbsp;
+                <span>{profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%</span>
+                </span>
             </div>
             </>
         )
@@ -49,11 +54,14 @@ export default function Carousel() {
 
     const responsive = {
         0: {
-            items: 2,
+            items:10,
         },
         1024: {
-            items: 5,
+            items: 4,
         },
+        2048: {
+            items: 1,
+        }
     };
 
     const stagePadding = {
@@ -67,7 +75,7 @@ export default function Carousel() {
         <AliceCarousel
         infinite
         autoPlayInterval={1000}
-        animationDuration={10000}
+        animationDuration={5000}
         disableDotsControls
         disableButtonsControls
         responsive={responsive}

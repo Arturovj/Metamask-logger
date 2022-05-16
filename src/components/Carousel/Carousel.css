@@ -1,4 +1,8 @@
 .coin{
-   margin-top: 50pxpx;
-   width: auto ;
+  margin: 25px;
+   /* /* background: rgba(255,255,255,0.1); */
+    width: 50%;
+   border-radius: 50px;
+   box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); 
+
 }
